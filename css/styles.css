@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+
+.center{
+    text-align: center;
+    font-size: 30px;
+}
+
+.contenedorgrid{  
+    width: 90%;
+    max-width: 1000px;
+    background-color: forestgreen;
+    /*Para centrar el contenido*/
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 15px;
+    /*DE aquí a*/
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    /*A aquí se definió la grid de forma explícita*/
+
+    grid-template-areas: 
+    "header     header      header"
+    "contenido  contenido   sidebar"
+    "widget1    widget2     sidebar"
+    "footer     footer      footer";
+}
+
+/*Quiere decir que accedemos directamente a los div de dentro de contenedorgrid así como también a las demás clases*/
+.contenedorgrid > div,
+.contenedorgrid .header,
+.contenedorgrid .contenido,
+.contenedorgrid .sidebar,
+.contenedorgrid .footer {
+    background-color: aqua;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.contenedorgrid .header{
+    background-color: #240b36;
+    color: aliceblue;
+    /*Para indicarle dónde queremos que inicie y dónde termine*/
+    /*grid-column-start: 1;
+    grid-column-end: -1;*/
+    grid-area: header;
+}
+
+.contenedorgrid .contenido{
+    /*grid-column: span 2;*/
+    grid-area: contenido;
+}
+
+.contenedorgrid .sidebar{
+    grid-column: 3 / 4;
+    background-color: #faa43d;
+/*Tamaño mínimo de 100 px*/
+    min-height: 100px;
+/*De aquí a*/
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+/*Aquí se empezaron a utilizar FLEXBOX para centrar elementos*/
+
+    /*grid-row: 2 / 4;*/
+
+    grid-area: sidebar;
+}
+
+.contenedorgrid .widget1,
+.contenedorgrid .widget2 {
+    background-color: #55a8fd;
+    color: #fff;
+    height: 100px;
+/*De aquí a*/
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+/*Aquí se empezaron a utilizar FLEXBOX para centrar elementos*/
+}
+
+.contenedorgrid .widget1{
+    grid-area: widget1;
+}
+
+.contenedorgrid .widget2{
+    grid-area: widget2;
+}
+
+.contenedorgrid .footer{
+    background-color: #240b36;
+    color: white;
+    /*grid-column: span 3;*/
+    grid-area: footer;
+}
+
+/*HASTA AQUÍ DEJA DE SER RESPONSIVE*/
+/*A PARTIR DE LO SIGUIENTE YA EMPIEZA A SER RESPONSIVE*/
+/*
+@media screen and (max-width: 768px) {
+    .contenedorgrid .contenido{
+        grid-column:  1 / -1;
+    }
+
+    .contenedorgrid .sidebar{
+        grid-column: 1 / -1;
+
+    }
+
+    .contenedorgrid .widget1{
+        grid-column: span 2;
+    }
+}*/
+
+@media screen and (max-width: 768px) {
+    .contenedorgrid{
+        grid-template-areas: 
+        "header     header      header"
+        "contenido  contenido   contenido"
+        "sidebar    sidebar     sidebar"
+        "widget1    widget1     widget2"
+        "footer     footer      footer";
+    }
+}

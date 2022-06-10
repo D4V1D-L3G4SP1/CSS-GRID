@@ -1,0 +1,24 @@
+.contenedor{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 150px 1fr 150px;
+    grid-template-rows: 150px 100px 150px;
+
+/*Lo siguientes es Solamente para programar
+el grid implcito*/
+    grid-auto-columns: 100px;
+    grid-auto-rows: 100px;
+
+    grid-auto-flow: dense;
+}
+
+.contenedor .span2{
+    grid-column: span 2;
+    background-color: crimson;
+}
+
+.contenedor .span3{
+    grid-column: span 3;
+
+    background-color: darkblue;
+}
